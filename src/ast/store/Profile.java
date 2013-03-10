@@ -12,11 +12,7 @@ public class Profile {
 	private Date dob;
 	
 	
-	public Profile()
-	{
-		
-	}
-	
+	public Profile() {}	
 	
 	public void setUsername(String _username)
 	{

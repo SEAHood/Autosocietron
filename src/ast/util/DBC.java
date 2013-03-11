@@ -11,8 +11,8 @@ public class DBC {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
 	static final String DB_URL = "jdbc:mysql://localhost/autosocietron_db";
 	
-	static final String USER = "web";
-	static final String PASS = "ASTpas5";
+	static final String USER = "root";
+	static final String PASS = "";
 	
 	Connection conn = null;
 	Statement stmt = null;
@@ -74,9 +74,9 @@ public class DBC {
 					city + "', '" + country + "', '" + interest1 + "', '" + interest2 + "', '" + interest3 + "', '" +
 					TTP + "', '" + TTPJ + "', '" + LTP + "', '" + SPL + "', '" + LTPINT1 + "', '" + LTPINT2 + "', '" +
 					LTPINT3 + "', '" + LTPNEWLOC + "', '" + LTPEVENT + "', '" + LTPWEATHER + "', '" + LTPNEWS + "', '" +
-					LTPFLR + "', '" + LTPPHOTO + "')";
-		
-			/*String sql = "INSERT INTO `profile` " +
+					LTPFLR + "', '" + LTPPHOTO + "', CURRENT_TIMESTAMP)";
+/*		
+			String sql = "INSERT INTO `profile` " +
 				"VALUES ('shood', 'password', 'Sam', 'Hood', STR_TO_DATE('" + dob + "','%d-%m-%Y'), 'Male', " +
 				"'Not sure what this should be', " +
 				"'doesnt matter', 'Dundee', 'Scotland', 'Science', 'Food', 'Computing', " +

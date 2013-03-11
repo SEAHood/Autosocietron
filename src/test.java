@@ -1,5 +1,8 @@
 
 
+import ast.store.Profile;
+import ast.store.YQLResult;
+import ast.store.YQLWeatherResult;
 import ast.util.DBC;
 
 public class test {
@@ -9,7 +12,8 @@ public class test {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		DBC dbc = new DBC();
+		YQLWeatherResult result = new YQLWeatherResult();
+		//dbc.insertProfile(newProfile);
 		//dbc.test();
 	}
 

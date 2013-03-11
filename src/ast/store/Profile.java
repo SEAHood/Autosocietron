@@ -17,6 +17,34 @@ public class Profile {
 		
 	}
 	
+	public void createTest()
+	{
+		username = "fraser";
+		password = "fraser";
+		firstName = "Fraser";
+		surname = "Sharp";
+		gender = "Male";
+		bio = "Blah blah blah cats and dogs";
+		city = "Dundee";
+		country = "United Kingdom";
+		interest1 = "Sport";
+		interest2 = "Science";
+		interest3 = "Computing";
+		TTP = 20;
+		TTPJ = 1;
+		LTP = 9;
+		SPL = 9;
+		LTPINT1 = 5;
+		LTPINT2 = 5;
+		LTPINT3 = 5;
+		LTPNEWLOC = 5;
+		LTPEVENT = 5;
+		LTPWEATHER = 5;
+		LTPNEWS = 5;
+		LTPFLR = 5;
+		LTPPHOTO = 5;
+		dob = new Date(92,04,15);
+	}
 	
 	public void setUsername(String _username)
 	{

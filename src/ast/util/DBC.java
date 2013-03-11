@@ -10,19 +10,124 @@ import ast.store.Profile;
 public class DBC {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
 	static final String DB_URL = "jdbc:mysql://localhost/autosocietron_db";
-	
-	static final String USER = "root";
-	static final String PASS = "";
-	
-	Connection conn = null;
-	Statement stmt = null;
-	
-	public DBC() {
+	static final String USER = "web";
+	static final String PASS = "ASTpas5";
+		
+	public static void selectProfile()
+	{
+		 Connection conn = null;
+		 Statement stmt = null;
+		 try{			
+		      //STEP 2: Register JDBC driver
+		      Class.forName("com.mysql.jdbc.Driver");
+
+		      //STEP 3: Open a connection
+		      System.out.println("Connecting to a selected database...");
+		      conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		      System.out.println("Connected database successfully...");
+		      
+		      //STEP 4: Execute a query
+		      System.out.println("Creating statement...");
+		      stmt = conn.createStatement();
+
+		      String sql = "SELECT * FROM PROFILE";
+		      ResultSet rs = stmt.executeQuery(sql);
+		      //STEP 5: Extract data from result set
+		      while(rs.next()){
+		         //Retrieve by column name
+		         String username = rs.getString("username");
+
+		         //Display values
+		         System.out.print("Username:" + username);
+		      }
+		      rs.close();
+		   }catch(SQLException se){
+		      //Handle errors for JDBC
+		      se.printStackTrace();
+		   }catch(Exception e){
+		      //Handle errors for Class.forName
+		      e.printStackTrace();
+		   }finally{
+		      //finally block used to close resources
+		      try{
+		         if(stmt!=null)
+		            conn.close();
+		      }catch(SQLException se){
+		      }// do nothing
+		      try{
+		         if(conn!=null)
+		            conn.close();
+		      }catch(SQLException se){
+		         se.printStackTrace();
+		      }//end finally try
+		   }//end try
 	}
 	
-	public boolean insertProfile(Profile newProfile)
+	
+	public static boolean insertPost(Profile profileToPost, Post newPost)
 	{
-		try {
+		Connection conn = null;
+		 Statement stmt = null;
+		 try {
+			//STEP 2: Register JDBC driver
+			Class.forName("com.mysql.jdbc.Driver");
+						
+			//STEP 3: Open a connection
+			System.out.println("Connecting to database...");
+			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+			
+			System.out.println("Connected.");
+			stmt = conn.createStatement();
+			
+			String postBody = newPost.getPostBody();
+							
+			//SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+			//String postDate = sdf.format(newPost.getPostTimestamp());
+			
+			String postType = newPost.getPostType();
+			String username = profileToPost.getUsername();
+			
+			String sql = "INSERT INTO `POST` (postBody, postType, USER_username) " +
+					"VALUES ('" + postBody + "', '" +
+					postType + "', '" + username + "')";
+			System.out.println("Executed successfully: '" + sql + "'");
+			stmt.executeUpdate(sql);
+		
+		} 
+		catch(SQLException se) {
+		      //Handle errors for JDBC
+			
+		    se.printStackTrace();
+		} 
+		catch(Exception e) {
+		      //Handle errors for Class.forName
+		    e.printStackTrace();
+		}
+		finally {
+			//finally block used to close resources
+			try {
+				if(stmt!=null)
+					conn.close();
+			}
+			catch(SQLException se) {
+			}// do nothing
+			try {
+				if(conn!=null)
+					conn.close();
+			}
+			catch(SQLException se) {
+			   se.printStackTrace();
+			}//end finally try
+		}//end try
+		return true;
+	}
+	
+	
+	public static boolean insertProfile(Profile newProfile)
+	{
+		 Connection conn = null;
+		 Statement stmt = null;
+		 try {
 			//STEP 2: Register JDBC driver
 			Class.forName("com.mysql.jdbc.Driver");
 						
@@ -114,12 +219,12 @@ public class DBC {
 		}//end try
 		return true;
 	}
-	
+
 	public boolean insertPost(Post newPost)
 	{
 		return true;
 	}
-	
+
 	public boolean runQuery(String sql) {
 		
 		return true;

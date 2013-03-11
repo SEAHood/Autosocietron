@@ -11,7 +11,6 @@ public class Profile {
 	private int LTPINT1, LTPINT2, LTPINT3, LTPNEWLOC, LTPEVENT, LTPWEATHER, LTPNEWS, LTPFLR, LTPPHOTO;
 	private Date dob;
 	
-	
 	public Profile()
 	{
 		
@@ -45,6 +44,7 @@ public class Profile {
 		LTPPHOTO = 5;
 		dob = new Date(92,04,15);
 	}
+
 	
 	public void setUsername(String _username)
 	{
